@@ -2,8 +2,9 @@ import Data.List.Split (splitOn)
 
 main = do
   input <- getContents
-  print $ sum $ map (paperSize . map read . splitOn "x") $ lines input 
-  print $ sum $ map (ribbon . map read . splitOn "x") $ lines input 
+  let parcels = map (map read  . splitOn "x") $ lines input
+  print $ sum $ map paperSize parcels
+  print $ sum $ map ribbon parcels
 
 paperSize [l,w,h] = 2*l*w+2*w*h+2*h*l+slack
   where
